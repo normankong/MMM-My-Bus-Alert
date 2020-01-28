@@ -1,0 +1,14 @@
+{
+  "LINE": "路線",
+  "DESTINATION": "目的地",
+  "DEPARTURE": "預計到達時間",
+  "NOW": "現在",
+  "TIME": "",
+  "NO-TRAMS": "沒有數據",
+  "MINUTE": "分鐘",
+  "MINUTES": "分鐘",
+  "EVERY": "每",
+  "BUS_INFO": "巴士資訊",
+  "LAST_BUS_DEPART": "尾班車已開",
+  "STILL_HAVE" : "仲有"
+}

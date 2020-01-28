@@ -1,0 +1,18 @@
+.MMM-My-Bus-Alert{
+	position: absolute;
+	top: 30%;
+    transform: translateY(-30%);
+}
+
+.MMM-My-Bus-Alert .dataRow {
+	font-size: 100px;
+	color: yellow;
+	height: 70px;
+}
+
+.MMM-My-Bus-Alert .subRow {
+	padding-top: 50px;
+	font-size: 50px;
+	color: white;
+	text-align: left;
+}

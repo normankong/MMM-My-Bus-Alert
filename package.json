@@ -1,0 +1,27 @@
+{
+  "name": "MMM-My-Bus-Alert",
+  "version": "1.0.0",
+  "description": "MagicMirror² module - My Bus Alert",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/normankong/MMM-My-Bus-Alert.git"
+  },
+  "keywords": [
+    "MagicMirror",
+    "KMB",
+    "magic mirror",
+    "smart mirror",
+    "public transport",
+    "local transit"
+  ],
+  "author": "Norman Kong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/normankong/MMM-My-Bus-Alert/issues"
+  },
+  "homepage": "https://github.com/normankong/MMM-My-Bus-Alert#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "request": "^2.83.0"
+  }
+}
