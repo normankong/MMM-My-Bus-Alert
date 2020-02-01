@@ -22,7 +22,7 @@ Module.register("MMM-My-Bus-Alert", {
 
     getTranslations: function () {
         return {
-            en: "translations/en.json",
+            "en": "translations/en.json",
             "zh-tw": "translations/zh.json"
         };
     },
@@ -37,7 +37,6 @@ Module.register("MMM-My-Bus-Alert", {
 
         // Collect the stop info (including the routes that the stop)
         this.etaItems = [];
-        this.activeItem = 0;
 
         this.sendSocketNotification("ADD_STOPS", {
             config: this.config.stops
@@ -104,10 +103,6 @@ Module.register("MMM-My-Bus-Alert", {
 
         var wrapper = document.createElement("div");
 
-        if (this.activeItem >= this.etaItems.length) {
-            this.activeItem = 0;
-        }
-
         // Actually it is a new redraw
         if (this.etaItems === null) {
             wrapper.innerHTML = this.translate("LOADING");
@@ -139,7 +134,7 @@ Module.register("MMM-My-Bus-Alert", {
         if (!routeObj || routeObj.length == 0)
             return null;
 
-        let priResult = routeObj.data.route.Route;
+        let priResult = "";
         let subResult = "";
 
         let etaInfo = routeObj.data.raw.data.response;
@@ -148,16 +143,18 @@ Module.register("MMM-My-Bus-Alert", {
 
         } else {
             let now = moment();
-            var etaStr = etaInfo[0].t.split('　')[0];
-            let etaTime = moment(etaStr, "hh:mm:ss");
-            let text = moment.duration(now.diff(etaTime)).humanize().replace(" ", "");
-            priResult += ` ${this.translate("STILL_HAVE")}${text}`;
-
+            let i = 0;
             for (r in etaInfo) {
                 var etaStr = etaInfo[r].t.split('　')[0];
                 let etaTime = moment(etaStr, "hh:mm:ss");
-                let text = moment.duration(now.diff(etaTime)).humanize().replace(" ", "");
-                subResult += `${parseInt(r)+1}. ${etaStr} ${this.translate("STILL_HAVE")}${text}<br/>`;
+                if (etaTime > now) {
+                    let text = moment.duration(now.diff(etaTime)).humanize().replace(" ", "");
+                    let desc = `${this.translate("STILL_HAVE")}${text}`;
+                    if (priResult == "") {
+                        priResult = `${routeObj.data.route.Route} ${desc}`;
+                    }
+                    subResult += `${++i}. ${etaStr} ${desc}<br/>`;
+                }
             }
         }
 
